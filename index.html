@@ -17,16 +17,6 @@
             background-position: right center;
             text-align: center;
         }
-        p{
-            font-family: "Helvetica", "Arial", sans-serif;
-            font-size: 16pt;
-            color: #333333;
-            background-color: #FEFEFE;
-            margin-left: 400px;
-            margin-top: 40px;
-            margin-bottom: 10px;
-            max-width: 700px;
-        }
         div {
             margin-top: 20px;
             margin-bottom: 10px;
@@ -37,19 +27,6 @@
             font-family: "Helvetica", "Arial", sans-serif;
             font-size: 14pt;
             margin-left:5px;
-        }
-        .input-box {
-            font-family: "Helvetica", "Arial", sans-serif;
-            margin: 0px;
-            font-size: 14pt;
-            width: 50%;
-        }
-        .drop-down-custom{
-          border-style: ridge;
-          background-color: white;
-          border-radius: 5px;
-          margin-left: 7px;
-          height: 30px;
         }
         .text-custom{
           border-style: ridge;
@@ -64,128 +41,24 @@
             word-wrap: break-word;
             color: transparent;
         }
-        mark{
-            color: black;
-            background-color: #d4e9ab; /* or whatever */
-        }
-​
         .backdrop {
             background-color: #fff; /* or whatever */
         }
-​
-        .container {
-          display: block;
-          position: relative;
-          padding-left: 35px;
-          margin-bottom: 12px;
-          cursor: pointer;
-          font-size: 22px;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-​
-        .container input {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          height: 0;
-          width: 0;
-        }
-​
-        .checkmark {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 25px;
-          width: 25px;
-          background-color: #eee;
-        }
-​
-        .container:hover input ~ .checkmark {
-          background-color: #ccc;
-        }
-​
-        .container input:checked ~ .checkmark {
-          background-color: #2196F3;
-        }
-​
-        .checkmark:after {
-          content: "";
-          position: absolute;
-          display: none;
-        }
-​
-        .container input:checked ~ .checkmark:after {
-          display: block;
-        }
-​
-        .container .checkmark:after {
-          left: 9px;
-          top: 5px;
-          width: 5px;
-          height: 10px;
-          border: solid white;
-          border-width: 0 3px 3px 0;
-          -webkit-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-        }        
   </style>
   
   <link rel="stylesheet" href ="css/home.css" type =/text/css>
   <title> MAKING PREDICTIONS</title>
   <h1>Using Trump's Cool Speeches</h1>
   <body>
-      <p>Type the word you want to look for in the box below and press Submit.</p>
       <div>
-          <input class="input-box" type="text" id="inputBox" >
-          <button class="button-submit" type="button" id="submitButton"> Submit </button>
-          <select class="drop-down-custom" id="opt" >
-              <option value="1">Show Details per Line</option>
-              <option value="2">Show Details on Header Only</option>
-          </select> 
+          <button class="button-submit" type="button" id="submitButton"> Fire Up </button>
       </div>
-      <div >
-            <label class="container">Play
-              <input type="checkbox" id="play" value="play"checked>
-              <span class="checkmark"></span>
-            </label>  
-            <label class="container">Act
-              <input type="checkbox" id="act" value="act" checked>
-              <span class="checkmark"></span>
-            </label>  
-            <label class="container">Scene
-              <input type="checkbox" id="scene" value="scene" checked>
-              <span class="checkmark"></span>
-            </label>  
-            <label class="container">Character
-              <input type="checkbox" id="character" value="character" checked>
-              <span class="checkmark"></span>
-            </label>  
-       </div>
        <div>
            <textarea class="text-custom" id="responseDiv" name="text"></textarea>
        </div>
        <script>
             // Set a listener function for the button click
             document.getElementById('submitButton').onclick = function () {
-                // Get the current string in the text box
-                var input = document.getElementById('inputBox').value;
-                var option = document.getElementById('opt').value;
-                              
-                var play = document.getElementById('play').checked;
-                var act = document.getElementById('act').checked;
-                var scene = document.getElementById('scene').checked;
-                var character = document.getElementById('character').checked;
-​
-                // Create and send an HTTP request
-                var oReq = new XMLHttpRequest();
-                oReq.addEventListener("load", responseListener);
-                oReq.open("GET", "http://graph-flower-8080.codio.io/search?word=" + input 
-                          + "&opt=" + option +"&play=" + play + "&act=" + act 
-                          + "&scene=" + scene + "&character=" + character);
                 oReq.send();
             }
             // Listener runs when the server's response comes back
